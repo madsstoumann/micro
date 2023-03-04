@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Text Creator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="app.css" />
+
+  <style>
+    /* Text Component */
+    .c-tx {
+      font-family: var(--c-tx-ff, ui-sans-seif, system-ui, sans-serif);
+      font-size: var(--c-tx-fz, 1rem);
+      font-weight: var(--c-tx-fw, 400);
+      hyphens: auto;
+      hyphenate-limit-chars: var(--c-tx-hlz-x) var(--c-tx-hlz-y) var(--c-tx-hlz-z);
+      letter-spacing: var(--c-tx-lts, 1);
+      line-height: var(--c-tx-lh, 1.3);
+      overflow: hidden;
+      overflow-wrap: var(--c-tx-ow, normal);
+      text-overflow: var(--c-tx-tov, clip);
+      text-transform: var(--c-tx-tt, none);
+      white-space: var(--c-tx-whs, normal);
+      word-break: var(--c-tx-wob, normal);
+      word-spacing: var(--c-tx-wos, 1);
+
+      /* gradient text */
+      background: linear-gradient(var(--c-tx-angle, 35deg), var(--c-tx-c, #D676EB) var(--c-tx-stop, 30%), var(--c-tx-c2, #8227FF) var(--c-tx-stop2, 70%));
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <div class="c-tx" contenteditable>The quick brown fox jumps over the lazy dog</div>
+
+  <form class="app" id="app">
+    <fieldset>
+      <label>
+        <span>font-family</span>
+        <select name="c-tx-ff" data-scope="root">
+          <option value="ui-sans-serif, system-ui, sans-serif">System UI sans-serif</option>
+          <option value="ui-serif, serif">System UI serif</option>
+          <option value="Inter, sans-serif">Inter</option>
+        </select>
+      </label>
+      <label>
+        <span>font-size</span>
+        <input type="range" min="0.5" max="10" step="0.0625" value="1" name="c-tx-fz" data-scope="root" data-unit="rem" />
+      </label>
+      <label>
+        <span>font-weight</span>
+        <input type="range" min="100" max="900" value="400" name="c-tx-fw" data-scope="root" />
+      </label>
+      <label>
+        <span>letter-spacing</span>
+        <input type="range" name="c-tx-lts" min="-0.75" max="2" value="0" step="0.0625" data-scope="root" data-unit="rem" />
+      </label>
+      <label>
+        <span>line-height</span>
+        <input type="range" name="c-tx-lh" min="0" max="2" value="1.3" step="0.05" data-scope="root" />
+      </label>
+      <label>
+        <span>text-overflow</span>
+        <select name="c-tx-tov" data-scope="root">
+          <option value="clip">clip</option>
+          <option value="ellipsis">ellipsis</option>
+          <option value="fade">fade</option>
+        </select>
+      </label>
+      <label>
+        <span>text-transform</span>
+        <select name="c-tx-tt" data-scope="root">
+          <option value="capitalize">capitalize</option>
+          <option value="lowercase">lowercase</option>
+          <option value="uppercase">uppercase</option>
+          <option value="none" selected>none</option>
+        </select>
+      </label>
+      <label>
+        <span>white-space</span>
+        <select name="c-tx-whs" data-scope="root">
+          <option value="break-spaces">break-spaces</option>
+          <option value="normal" selected>normal</option>
+          <option value="nowrap">nowrap</option>
+          <option value="pre">pre</option>
+          <option value="pre-wrap">pre-wrap</option>
+          <option value="pre-line">pre-line</option>
+        </select>
+      </label>
+      <label>
+        <span>word-spacing</span>
+        <input type="range" name="c-tx-wos" min="-0.75" max="2" value="0" step="0.0625" data-scope="root" data-unit="rem" />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>
+        <span>gradient angle</span>
+        <input type="range" max="360" value="35" name="c-tx-angle" data-scope="root" data-unit="deg" />
+      </label>
+      <label>
+        <span>color 1</span>
+        <input type="color" name="c-tx-c" value="#D676EB" data-scope="root" />
+      </label>
+      <label>
+        <span>color 1 stop</span>
+        <input type="range" max="100" value="30" name="c-tx-stop" data-scope="root" data-unit="%" />
+      </label>
+      <label>
+        <span>color 2</span>
+        <input type="color" name="c-tx-c2" value="#8227FF" data-scope="root" />
+      </label>
+      <label>
+        <span>color 2 stop</span>
+        <input type="range" max="100" value="75" name="c-tx-stop2" data-scope="root" data-unit="%" />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Hyphenation and breaks</legend>
+      <label>
+        <span>hyphenate-limit-chars X</span>
+        <input type="range" min="1" max="20" value="8" name="c-tx-hlz-x" data-scope="root" />
+      </label>
+      <label>
+        <span>hyphenate-limit-chars Y</span>
+        <input type="range" min="1" max="20" value="5" name="c-tx-hlz-y" data-scope="root" />
+      </label>
+      <label>
+        <span>hyphenate-limit-chars Z</span>
+        <input type="range" min="1" max="20" value="5" name="c-tx-hlz-z" data-scope="root" />
+      </label>
+      <label>
+        <span>overflow-wrap</span>
+        <select name="c-tx-ow" data-scope="root">
+          <option value="anywhere">anywhere</option>
+          <option value="break-word">break-word</option>
+          <option value="normal" selected>normal</option>
+        </select>
+      </label>
+      <label>
+        <span>word-break</span>
+        <select name="c-tx-wob" data-scope="root">
+          <option value="break-all">break-all</option>
+          <option value="keep-all">keep-all</option>
+          <option value="normal" selected>normal</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+</main>
+
+<script type="module">
+import App from './app.js'
+new App(app)
+</script>
+</body>
+</html>

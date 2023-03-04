@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Avatar Creator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+
+  <style>
+    /* Avatar Component */
+    .c-avatar {
+      block-size: fit-content;
+      display: flex;
+      gap: var(--c-avatar-gap, 1em);
+      inline-size: fit-content;
+      margin: unset;
+      padding: unset;
+    }
+    .c-avatar-item {
+      aspect-ratio: 1 / 1;
+      background: var(--c-avatar-bg, #E6E6E6);
+      border: var(--c-avatar-bdw, 0%) solid var(--c-avatar-bdc, #CCCCCC);
+      border-radius: var(--c-avatar-bdrs, 0%);
+      container-type: inline-size;
+      display: grid;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      inline-size: var(--c-avatar-is, 150px);
+      place-content: center;
+      position: relative;
+    }
+    .c-avatar-item img {
+      border-radius: inherit;
+      filter: var(--c-avatar-fil, none);
+      inline-size: 100%;
+      inset: 0;
+      position: absolute;
+    }
+    .c-avatar-item :not(img) {
+      font-size: 30cqi;
+      font-weight: 300;
+    }
+    .c-avatar-item:not(:first-of-type) {
+      margin-inline-start: var(--c-avatar-ovl, 0%);
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <ul class="c-avatar">
+    <li class="c-avatar-item">
+      <strong>UP</strong>
+      <img src="/assets/avatar.jpg" alt="Unknown Person" />
+    </li>
+    <li class="c-avatar-item">
+      <strong>TP</strong>
+      <img src="/assets/avatar2.jpg" alt="Unknown Person" />
+    </li>
+    <li class="c-avatar-item">
+      <strong>LD</strong>
+      <img src="/assets/avatar3.jpg" alt="Unknown Person" />
+    </li>
+    <li class="c-avatar-item">
+      <strong>SA</strong>
+      <img src="/assets/avatar4.jpg" alt="Unknown Person" />
+    </li>
+    <li class="c-avatar-item">
+      <strong>+12</strong>
+    </li>
+  </ul>
+
+  <form class="app" id="app">
+    <fieldset>
+      <label>
+        <span>background-color</span>
+        <input type="color" name="c-avatar-bg" value="#E6E6E6" data-scope="root" />
+      </label>
+      <label>
+        <span>border-color</span>
+        <input type="color" name="c-avatar-bdc" value="#CCCCCC" data-scope="root" />
+      </label>
+      <label>
+        <span>border-radius</span>
+        <input type="range" name="c-avatar-bdrs" min="0" max="50" value="0" step="0.125" data-scope="root" data-unit="%" />
+      </label>
+      <label>
+        <span>border-width</span>
+        <input type="range" name="c-avatar-bdw" max="1" step="0.01" value="0" data-scope="root" data-unit="cqmin" />
+      </label>
+      <label>
+        <span>gap</span>
+        <input type="range" name="c-avatar-gap" min="0" max="50" value="16" data-scope="root" data-unit="px" />
+      </label>
+      <label>
+        <span>filter</span>
+        <select name="c-avatar-fil" data-scope="root">
+          <option value="none">none</option>
+          <option value="grayscale()">grayscale</option>
+          <option value="sepia()">sepia</option>
+          <option value="sepia(50%) grayscale(50%)">sepia / gray</option>
+        </select>
+      </label>
+      <label>
+        <span>inline-size</span>
+        <input type="range" min="50" max="300" value="100" name="c-avatar-is" data-scope="root" data-unit="px" />
+      </label>
+      <label>
+        <span>overlap</span>
+        <input type="range" min="-12" max="0" value="0" name="c-avatar-ovl" data-scope="root" data-unit="%" />
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Presets</legend>
+      <label>
+        <span>Select</span>
+        <select name="presets" form="presets">
+          <option value="none">none</option>
+        </select>
+      </label>
+      <!-- <button type="button">Save</button> -->
+    </fieldset>
+  </form>
+</main>
+
+<script type="module">
+import App from './app.js'
+new App(app)
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Button Designer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+  <style>
+
+
+.btn {
+  background: var(--btn-bg);
+  border: 0;
+  border-radius: var(--btn-bdrs);
+  box-shadow: var(--btn-bxsh);
+  color: var(--btn-c);
+  font-family: var(--btn-ff, ui-sans-serif, system-ui, sans-serif);
+  font-size: var(--btn-fz);
+  font-weight: var(--btn-fw);
+  leading-trim: both;
+  padding-block: var(--btn-pb);
+  padding-inline: var(--btn-pi);
+  position: relative;
+  text-edge: cap alphabetic;
+  transition: box-shadow .2s, color .25s ease-in-out;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--btn-bdrs);
+  padding: var(--btn-bdw, 2px); 
+  background: var(--btn-bdc);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+}
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--btn-bg-hover);
+    color: var(--btn-c-hover, hsla(0, 0%, 95%, 0.9));
+    box-shadow: var(--btn-bxsh-hover);
+  }
+}
+
+/* demo */
+body {
+  background-color: white;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+main {
+  display: grid;
+  gap: 1em;
+  grid-auto-columns: 1fr 175px;
+  grid-auto-flow: column;
+}
+main button {
+  place-self: center;
+}
+.app {
+  place-self: start end;
+}
+nav button {
+  background: hsl(0, 0%, 19%);
+  border: 0;
+  border-radius: 24px;
+  color: hsl(0, 0%, 95%);
+  padding: 1ch 2.5ch;
+}
+
+    </style>
+</head>
+<body>
+
+<main>
+<button type="button" class="btn">Click me</button>
+<form class="app" id="app">
+  <fieldset>
+    <label>
+      <span>border-radius</span>
+      <input type="range" name="btn-bdrs" min="0" max="10" value="1.5" step="0.125" data-scope="root" data-unit="em" />
+    </label>
+    <label>
+      <span>background</span>
+      <input type="text" name="btn-bg" value="linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)" data-scope="root" />
+    </label>
+    <label>
+      <span>background:hover</span>
+      <input type="text" name="btn-bg-hover" value="linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)" data-scope="root" />
+    </label>
+    <label>
+      <span>border-color</span>
+      <input type="text" name="btn-bdc" value="none" data-scope="root" />
+    </label>
+    <label>
+      <span>border-width</span>
+      <input type="range" max="20" name="btn-bdw" value="0" data-scope="root" data-unit="px" />
+    </label>
+    <label>
+      <span>box-shadow</span>
+      <input type="text" name="btn-bxsh" value="none" data-scope="root" />
+    </label>
+    <label>
+      <span>box-shadow:hover</span>
+      <input type="text" name="btn-bxsh-hover" value="0 0 0 5px hsla(0, 0%, 60%, 0.5)" data-scope="root" />
+    </label>
+    <label>
+      <span>color</span>
+      <input type="text" name="btn-c" value="hsl(0,0%,95%)" data-scope="root" />
+    </label>
+    <label>
+      <span>color:hover</span>
+      <input type="text" name="btn-c-hover" value="hsl(0,0%,95%)" data-scope="root" />
+    </label>
+    <label>
+      <span>font-size</span>
+      <input type="range" name="btn-fz" min="0.8" max="2" step="0.1" value="1.25" data-scope="root" data-unit="em" />
+    </label>
+    <label>
+      <span>font-weight</span>
+      <input type="range" name="btn-fw" min="100" max="900" step="100" value="300" data-scope="root" />
+    </label>
+    <label>
+      <span>padding-block</span>
+      <input type="range" name="btn-pb" max="10" step="0.25" value="0.75" data-scope="root" data-unit="em" />
+    </label>
+    <label>
+      <span>padding-inline</span>
+      <input type="range" name="btn-pi" max="10" step="0.25" value="1.75" data-scope="root" data-unit="em" />
+    </label>
+  </fieldset>
+</form>
+</main>
+
+<p><small>Presets:</small></p>
+<nav id="list">
+  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"hsl(195,5%,15%)","btn-bg-hover":"hsl(195,5%,20%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Dark</button>
+  <button type="button" data-preset='{"btn-bdrs":"0","btn-bg":"none","btn-bg-hover":"none","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 1px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,5%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Text Only</button>
+  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient</button>
+  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"none","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdw":"3","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient outline</button>
+  <button type="button" data-preset='{"btn-bdrs":"0","btn-bg":"hsl(195,50%,35%)","btn-bg-hover":"hsl(195,50%,25%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,50%,70%,0.5)","btn-c":"hsl(195,50%,95%)","btn-c-hover":"hsl(195,50%,99%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Square</button>
+</nav>
+
+<script type="module">
+  import App from './app.js'
+  new App(app, list)
+</script>
+</body>
+</html>

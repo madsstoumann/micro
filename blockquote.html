@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Blockquote Creator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+
+  <style>
+    /* Blockquote Component */
+    .c-quote {
+      block-size: fit-content;
+      border-color: var(--c-quote-bdc, transparent);
+      border-style: solid;
+      border-width: 0 0 0 var(--c-quote-bdw, 0%);
+      container-type: inline-size;
+      inline-size: var(--c-quote-is, 100%);
+      margin: 0 auto;
+      padding: var(--c-quote-pb, 0%) var(--c-quote-pi, 0%);
+      text-align: var(--c-quote-tal, start);
+    }
+    .c-quote q {
+      color: var(--c-quote-c, currentColor);
+      display: block;
+      font-size: max(16px, var(--c-quote-fz, 6cqi));
+      font-weight: var(--c-qoute-fw, 300);
+      line-height: 1.1;
+      margin-block-end: 1.5cqi;
+      quotes: var(--c-quote-q, initial);
+    }
+    .c-quote cite {
+      font-size: max(12px, calc(var(--c-quote-fz) / 2));
+    }
+    .c-quote cite::before { content: var(--c-cite-bf-cnt, none); }
+
+    /* large quote-mark */
+    .c-quote::before {
+      block-size: max(32px, calc(var(--c-quote-fz) / 0.75));
+      content: var(--c-quote-bf-cnt, unset);
+      font-family: ui-serif, serif;
+      display: block;
+      font-size: max(48px, calc(3 * var(--c-quote-fz)));
+      line-height: 1;
+      /* inset-block-start: -0.33em;
+      inset-inline-start: -0.44em;
+      position: absolute; */
+      /* z-index: -1; */
+    }
+
+  </style>
+  <!--
+‘
+’
+‚
+‛
+“
+”
+„
+‟
+
+  -->
+</head>
+<body>
+
+<main>
+
+  <blockquote class="c-quote">
+    <q>I have a theory that you can make any sentence seem profound by writing the name of a dead philosopher at the end of it</q>
+    <cite>Plato</cite>
+  </blockquote>
+
+  <form class="app" id="app">
+    <datalist id="quote-bg">
+      <option value="#673AB7"></option>
+      <option value="#3F51B5"></option>
+      <option value="#2196f3"></option>
+    </datalist>
+    <fieldset>
+      <label>
+        <span>border-color</span>
+        <input type="color" name="c-quote-bdc" value="#CCCCCC" data-scope="root" />
+      </label>
+      <label>
+        <span>border-width</span>
+        <input type="range" name="c-quote-bdw" max="2" step="0.01" value="0" data-scope="root" data-unit="cqmin" />
+      </label>
+      <label>
+        <span>inline-size</span>
+        <input type="range" name="c-quote-is" min="30" max="100" value="100" data-scope="root" data-unit="%" />
+      </label>
+      <label>
+        <span>font-size</span>
+        <input type="range" name="c-quote-fz" min="1" max="10" value="6" data-scope="root" data-unit="cqi" />
+      </label>
+      <label>
+        <span>padding-block</span>
+        <input type="range" name="c-quote-pb" min="0" max="10" value="0" data-scope="root" data-unit="cqi" />
+      </label>
+      <label>
+        <span>padding-inline</span>
+        <input type="range" name="c-quote-pi" min="0" max="10" value="0" data-scope="root" data-unit="cqi" />
+      </label>
+      <label>
+        <span>text-align</span>
+        <select name="c-quote-tal" data-scope="root">
+          <option value="start">start</option>
+          <option value="center">center</option>
+          <option value="end">end</option>
+        </select>
+      </label>
+      <label>
+        <span>quotes</span>
+        <select name="c-quote-q" data-scope="root">
+          <option value="auto">auto</option>
+          <option value='"«" "»" "‹" "›"'>french</option>
+          <option value='"„" "“" "‚" "‘"'>lower</option>
+          <option value="none">none</option>
+        </select>
+      </label>
+      <label>
+        <span>cite before</span>
+        <select name="c-cite-bf-cnt" data-scope="root">
+          <option value="'→ '">arrow</option>
+          <option value="'• '">bullet</option>
+          
+          <option value="'… '">ellipsis</option>
+          <option value="'— '">em dash</option>
+          <option value="'– '">en dash</option>
+          <option value="'‒ '">figure dash</option>
+          <option value="'― '">horizontal bar</option>
+          <option value="'⁓ '">swung dash</option>
+          <option value="'■ '">square</option>
+          <option value="none" selected>none</option>
+        </select>
+      </label>
+      <label>
+        <span>quote before</span>
+        <select name="c-quote-bf-cnt" data-scope="root">
+          <option value="none">none</option>
+          <option value="'“'">serif quote</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+</main>
+
+<script type="module">
+import App from './app.js'
+new App(app)
+</script>
+</body>
+</html>
