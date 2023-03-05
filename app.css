@@ -1,8 +1,9 @@
 /* UI Controls for my Codepen Apps */
-body {
+:where(body) {
+  --app-bg: color-mix(in srgb, Canvas 90%, black);
   --app-gap: .75em;
 	--app-width: 200px;
-	background-color: var(--app-bg, gainsboro);
+	background-color: var(--app-bg);
   color: CanvasText;
   color-scheme: light dark;
   font-family: var(--app-ff, ui-sans-serif, system-ui, sans-serif);
@@ -14,7 +15,7 @@ body {
   --c: CanvasText;
   --fsz: 12px;
   --gap: 1px;
-  --gap-c: var(--app-bg, gainsboro);
+  --gap-c: var(--app-bg);
   --pb: .5em;
   --pi: .75em;
 
@@ -47,7 +48,7 @@ body {
 div:has(details) { position: relative; }
 fieldset {
   border-width: 0;
-  border: 1px solid var(--gap-c);
+  /* border: 1px solid var(--gap-c); */
   border-radius: var(--bdrs);
   color: var(--c);
   display: grid;
@@ -108,38 +109,45 @@ radio-group input:checked + span {
   background-color: #FFF;
   color: var(--bgc);
 }
-summary {
+.app summary {
   align-items: center;
   display: flex;
   gap: var(--label-gap);
   justify-content: space-between;
   list-style-type: none;
 }
-summari > i { margin-inline-start: var(--label-gap); }
-summary::-webkit-details-marker { display: none; }
-summary +* { max-inline-size: min-content; }
+.app summari > i { margin-inline-start: var(--label-gap); }
+.app summary::-webkit-details-marker { display: none; }
+.app summary +* { max-inline-size: min-content; }
 
-[type="number"] {
+.app [type="number"] {
   background: transparent;
   inline-size: 3.5em;
 }
-:is([type="number"], [type="text"], select) {
+.app :is([type="number"], [type="text"], select, textarea) {
   -webkit-appearance: none;
   appearance: none;
   border: none;
   color: inherit;
   font-size: inherit;
+  
 }
-[type="text"] {
-  background: none;
-  font-family: ui-monospace, monospace;
+[type="text"], textarea {
+  margin-block-start: .25em;
+  padding: .33em .5em;
 }
-select {
+.app :is([disabled], [readonly]) {
+  color: darkgray;
+}
+.app select {
   background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' stroke='white' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
   background-repeat: no-repeat;
   background-position: 104% 50%;
   background-size: 2em;
   padding-inline-end: 1em;
+}
+.app textarea {
+  resize: vertical;
 }
 
 @media (min-width: 800px) {
