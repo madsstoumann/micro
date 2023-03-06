@@ -41,9 +41,14 @@
   inline-size: var(--app-width, max-content);
 }
 .app button {
-  background: var(--color-accent);
-  color: hsl(198, 71%, 5%);
+  background: color-mix(in srgb, var(--color-accent) 60%, black);
+  border: none;
+  /* color: hsl(198, 71%, 5%); */
   padding-block: 1.5ch;
+}
+.app button[type="reset"] {
+  color: darkgrey;
+  filter: grayscale(100);
 }
 div:has(details) { position: relative; }
 fieldset {

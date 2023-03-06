@@ -5,6 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="stylesheet" href="app.css" />
+  <style>
+    .togglelist details {
+      border-block-end: 1px solid GrayText;
+      padding-block: 1em;
+    }
+    .togglelist summary {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+    .togglelist table {
+      border-collapse: collapse;
+      margin-block-start: 1em;
+      inline-size: 100%;
+    }
+    .togglelist :is(td,th) {
+      border: 1px solid GrayText;
+      font-size: 0.8em;
+      padding: .5em .75em;
+    }
+    .togglelist th {
+      background: color-mix(in srgb, GrayText 50%, white);
+    }
+    .togglelist :is(td,th):nth-of-type(1) { inline-size: 15%; }
+    .togglelist :is(td,th):nth-of-type(2) { inline-size: 15%; }
+    .togglelist :is(td,th):nth-of-type(3) { inline-size: 50%; }
+    .togglelist :is(td,th):nth-of-type(4) { inline-size: 20%; text-align: end; }
+    .togglelist table button { border: 0; border-radius: .25em; font-size: inherit; padding: .25em .5em; }
+    .togglelist table button[name="delete"] { background-color: ActiveText; color: white }
+    .togglelist table button[name="edit"] { background-color: color-mix(in srgb, GrayText 40%, white); }
+  </style>
 </head>
 <body>
   
@@ -41,16 +71,17 @@ percentage
 <main>
   <div>
     <h1>Design Tokens</h1>
-    <form id="tokenlist"></form>
+    <form id="tokenlist" class="togglelist"></form>
   </div>
   <form id="app" class="app">
     <fieldset>
+      <label>Name
+        <input type="text" name="name" placeholder="Token friendly name" required>
+      </label>
       <label>Key
-        <input type="text" name="key" placeholder="Token Key" required>
+        <input type="text" name="key" placeholder="--key-name" required>
       </label>
-      <label>Friendly name
-        <input type="text" name="name" placeholder="Token name" required>
-      </label>
+      
       <label>Value
         <textarea name="value" placeholder="Token Value" required></textarea>
       </label>
@@ -70,7 +101,7 @@ percentage
         </select>
       </label>
       <label>UUID (read only)
-        <input type="text" disabled name="uuid" />
+        <input type="text" disabled name="uuid" placeholder="xxxx-xxxx-xxxx-xxxx" />
       </label>
       <button type="reset">Reset</button>
       <button type="submit">Add/update token</button>
@@ -120,17 +151,31 @@ percentage
   function renderTokens() {
   tokenlist.innerHTML = Object.keys(tokens)
     .map(
-      (group) => `<h2>${camel2title(group)}</h2><ul>
+      (group) => `<details open><summary>${camel2title(group)}</summary>${
+        tokens[group].length
+          ? `<table><thead><tr><th>Name</th><th>Key</th><th>Value</th><th>Actions</th></tr></thead>`
+          : ''
+      }
     ${Object.values(tokens[group])
       .map(
-        (entry) => `<li><strong>${entry.key}:</strong> <code>${entry.value}</code>
-      <button type="button" name="edit" data-group="${group}" data-uuid="${entry.id}">Edit</button>
-      ${entry.deletable ? `<button type="button" name="delete" data-group="${group}" data-uuid="${entry.id}">Delete</button>`:''}
-      </li>`
-      ).join('')}
-    </ul>`
-    ).join('');
-  }
+        (entry) => `<tr><td>${entry.name}</td><td>${entry.key}</td><td>${
+          entry.value
+        }</td>
+      <td><button type="button" name="edit" data-group="${group}" data-uuid="${
+          entry.id
+        }">Edit</button>
+      ${
+        entry.deletable
+          ? `<button type="button" name="delete" data-group="${group}" data-uuid="${entry.id}">Delete</button>`
+          : ''
+      }
+      </td></tr>`
+      )
+      .join('')}
+      ${tokens[group].length ? `</table>` : ''}</details>`
+    )
+    .join('');
+}
 
   const localTokens = localStorage.getItem('tokens');
   if (localTokens) tokens = Object.assign(tokens, JSON.parse(localTokens));
