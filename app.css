@@ -1,6 +1,6 @@
 /* UI Controls for my Codepen Apps */
 :where(body) {
-  --app-bg: color-mix(in srgb, Canvas 90%, black);
+  --app-bg: color-mix(in srgb, Canvas 95%, black);
   --app-gap: .75em;
 	--app-width: 200px;
 	background-color: var(--app-bg);
@@ -41,14 +41,12 @@
   inline-size: var(--app-width, max-content);
 }
 .app button {
-  background: color-mix(in srgb, var(--color-accent) 60%, black);
+  background: color-mix(in srgb, var(--color-accent) 60%, Canvas);
   border: none;
-  /* color: hsl(198, 71%, 5%); */
   padding-block: 1.5ch;
 }
 .app button[type="reset"] {
-  color: darkgrey;
-  filter: grayscale(100);
+  filter: grayscale(100) brightness(1.2);
 }
 div:has(details) { position: relative; }
 fieldset {
@@ -200,6 +198,35 @@ radio-group input:checked + span {
   .horizontal:not(.horizontal-labels) details { padding-block-start: .15em;}
   .horizontal-labels label :is(span, strong)::after { content: ":" }
 }
+
+.togglelist details {
+  border-block-end: 1px solid GrayText;
+  padding-block: 1em;
+}
+.togglelist summary {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.togglelist table {
+  border-collapse: collapse;
+  margin-block-start: 1em;
+  inline-size: 100%;
+}
+.togglelist :is(td,th) {
+  background-color: Field;
+  border: 1px solid GrayText;
+  font-size: 0.8em;
+  padding: .5em .75em;
+}
+
+/* ======= TOGGLE LIST ====== */
+.togglelist th { background: color-mix(in srgb, ButtonBorder 20%, Canvas); }
+.togglelist :is(td,th):nth-of-type(1) { inline-size: 15%; }
+.togglelist :is(td,th):nth-of-type(2) { inline-size: 15%; }
+.togglelist :is(td,th):nth-of-type(3) { font-family: ui-monospace, monospace; inline-size: 50%; }
+.togglelist :is(td,th):nth-of-type(4) { inline-size: 20%; text-align: end; }
+.togglelist table button { border: 0; border-radius: .25em; font-size: inherit; padding: .25em .5em; }
+.togglelist table button[name="delete"] { background-color: ActiveText; color: white }
 
 [data-sr] { 
   clip: rect(0 0 0 0);
