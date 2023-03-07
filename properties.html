@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 <head>
-  <title>Tokens</title>
+  <title>CSS Properties</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="stylesheet" href="app.css" />
@@ -9,22 +9,28 @@
 <body>
 <main>
   <div>
-    <h1>Properties</h1>  
+    <h1>CSS Properties</h1>  
     <div class="togglelist">
 			<table>
-				<tr><th>Property</th><th>Group</th><th>Syntax</th><th>Media</th></tr>
+				<thead><tr><th>Property</th><th>Group</th><th>Syntax</th><th>Media</th></tr></thead>
 				<tbody id="props"></tbody>
 			</table>
 		</div>
   </div>
 </main>
 <script>
-  const properties = fetch('./properties.json').then(data => data.json()).then(json => {
-    props.innerHTML = Object.keys(json).map(key => 
-       `<tr><td>${key}</td><td>${json[key].groups[0]}</td><td>${json[key].syntax}</td><td>${json[key].media}</td></tr>`
-      
-    ).join('')
-  })
+const properties = fetch("./properties.json")
+  .then((data) => data.json())
+  .then((json) => {
+    props.innerHTML = Object.keys(json)
+      .map(
+        (key) =>
+          `<tr><td>${key}</td><td>${json[key].groups[0]}</td><td>${json[key].syntax
+						.replaceAll('<', '&lt;')
+						.replaceAll('>','&gt;')}</td><td>${json[key].media}</td></tr>`
+      )
+      .join('');
+  });
 </script>
 </body>
 </html>
