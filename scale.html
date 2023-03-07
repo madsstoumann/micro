@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Micro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <main>
+  <div id="text"></div>
+  <form id="app" class="app" method="post">
+    <fieldset>
+      <label>Screen min-width (in px)
+        <input type="number" name="vmin" min="100" max="1240" value="320"  required>
+      </label>
+      <label>Screen max-width (in px)
+        <input type="number" name="vmax" min="320" max="1920" value="1240" required>
+      </label>
+      <label>Font min-size (in px)
+        <input type="number" name="fmin" min="8" max="100" value="16"  required>
+      </label>
+      <label>Font max-size (in px)
+        <input type="number" name="fmax" min="10" max="300" value="18" required>
+      </label>
+      <label>Type scale min
+        <input type="number" name="smin" min="1.067" max="2" step="0.001" value="1.2"  required>
+      </label>
+      <label>Type scale max
+        <input type="number" name="smax" min="1.067" max="2" step="0.001" value="1.25"  required>
+      </label>
+      <label>Scale steps
+        <input type="number" name="scale" max="30" value="5"  required>
+      </label>
+      <label>Precision
+        <input type="number" name="precision" min="1" max="10" value="4"  required>
+      </label>
+      <button type="submit">Generate scale</button>
+    </fieldset>
+  </form>
+  </main>
+  <script>
+    function clamp(vmin = 320, vmax = 1240, fmin = 17, fmax = 21, scale = 1, smin = 1.2, smax = 1.25, precision = 4) {
+      const fix = value => parseFloat(value.toFixed(precision))
+      const root = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size').replace('px', ''), 10) || 16
+      return [...Array(scale).keys()].reduce((result, i) => {
+        const minFontSize = i ? fix(result.minFontSize * smin) : result.minFontSize
+        const maxFontSize = i ? fix(result.maxFontSize * smax) : result.maxFontSize
+        const minWidth = vmin/root
+        const maxWidth = vmax/root
+        const slope = (maxFontSize - minFontSize) / (maxWidth - minWidth)
+        const intersection = fix(-minWidth * slope + minFontSize)
+        const preferred = `${intersection}rem + ${fix(slope * 100)}vw`;
+        result.value.push(`clamp(${minFontSize}rem, ${preferred}, ${maxFontSize}rem)`)
+        result.minFontSize = minFontSize
+        result.maxFontSize = maxFontSize
+        return result
+      }, {
+        minFontSize: fmin/root,
+        maxFontSize: fmax/root,
+        value: []
+      })
+      .value
+    }
+
+    app.addEventListener('submit', event => {
+      event.preventDefault()
+      const scale = clamp(
+        app.elements.vmin.valueAsNumber,
+        app.elements.vmax.valueAsNumber,
+        app.elements.fmin.valueAsNumber,
+        app.elements.fmax.valueAsNumber,
+        app.elements.scale.valueAsNumber,
+        app.elements.smin.valueAsNumber,
+        app.elements.smax.valueAsNumber,
+        app.elements.precision.valueAsNumber
+      )
+      text.innerHTML = scale.map((prop, index) => {
+        document.documentElement.style.setProperty(`--fz-${index}`, prop);
+        return `<p style="font-size:var(--fz-${index})">The quick brown fox jumps over the lazy dog</p>`
+      }).join('')
+    })
+
+    app.dispatchEvent(new Event('submit'));
+  </script>
+</body>
+</html>
