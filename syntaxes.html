@@ -26,7 +26,8 @@ const properties = fetch("./syntaxes.json")
     syntaxes.innerHTML = Object.keys(json)
       .map(
         (key) =>
-          `<tr><td>${key}</td><td>${json[key].syntax}</td></tr>`
+          `<tr><td>${key}</td><td>${json[key].syntax.replaceAll('<', '&lt;')
+						.replaceAll('>','&gt;')}</td></tr>`
       )
       .join('');
   });
