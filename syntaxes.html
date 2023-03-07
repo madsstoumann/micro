@@ -11,23 +11,23 @@
   <div>
     <h1>CSS Syntaxes</h1>  
     <div class="togglelist">
-			<table>
-				<thead><tr><th>Name</th><th>Syntax</th></tr></thead>
-				<tbody id="syntaxes"></tbody>
-			</table>
-		</div>
+      <table>
+        <thead><tr><th>Name</th><th>Syntax</th></tr></thead>
+        <tbody id="syntaxes"></tbody>
+      </table>
+    </div>
   </div>
 </main>
 <script>
 const properties = fetch("./syntaxes.json")
   .then((data) => data.json())
   .then((json) => {
-		console.log(json)
+    console.log(json)
     syntaxes.innerHTML = Object.keys(json)
       .map(
         (key) =>
           `<tr><td>${key}</td><td>${json[key].syntax.replaceAll('<', '&lt;')
-						.replaceAll('>','&gt;')}</td></tr>`
+            .replaceAll('>','&gt;')}</td></tr>`
       )
       .join('');
   });

@@ -11,11 +11,11 @@
   <div>
     <h1>CSS Properties</h1>  
     <div class="togglelist">
-			<table>
-				<thead><tr><th>Property</th><th>Group</th><th>Syntax</th><th>Media</th></tr></thead>
-				<tbody id="props"></tbody>
-			</table>
-		</div>
+      <table>
+        <thead><tr><th>Property</th><th>Group</th><th>Syntax</th><th>Media</th></tr></thead>
+        <tbody id="props"></tbody>
+      </table>
+    </div>
   </div>
 </main>
 <script>
@@ -26,8 +26,8 @@ const properties = fetch("./properties.json")
       .map(
         (key) =>
           `<tr><td>${key}</td><td>${json[key].groups[0]}</td><td>${json[key].syntax
-						.replaceAll('<', '&lt;')
-						.replaceAll('>','&gt;')}</td><td>${json[key].media}</td></tr>`
+            .replaceAll('<', '&lt;')
+            .replaceAll('>','&gt;')}</td><td>${json[key].media}</td></tr>`
       )
       .join('');
   });
