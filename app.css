@@ -1,26 +1,31 @@
 /* UI Controls for my Codepen Apps */
 :where(body) {
-  --app-bg: color-mix(in srgb, Canvas 95%, black);
+  --app-body-bg: Canvas;
+  --app-border-c: GrayText;
+  --app-c: CanvasText;
+  --app-field-bg: Field;
   --app-gap: .75em;
+  --app-input-bdrs: 2px;
+  --app-select-bg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' fill='none' stroke='CanvasText' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
 	--app-width: 200px;
-	background-color: var(--app-bg);
-  color: CanvasText;
+
+	background-color: var(--app-body-bg);
+  color: var(--app-c);
   color-scheme: light dark;
   font-family: var(--app-ff, ui-sans-serif, system-ui, sans-serif);
   margin: var(--app-gap);
 }
 .app {
-  --bgc: color-mix(in srgb, Canvas 90%, white);
+  --app-bg: color-mix(in srgb, Canvas 90%, white);
   --bdrs: 5px;
-  --c: CanvasText;
   --fsz: 12px;
   --gap: 1px;
-  --gap-c: var(--app-bg);
+  --gap-c: var(--app-body-bg);
   --pb: .5em;
   --pi: .75em;
 
   --color-accent: hsl(198, 71%, 50%);
-  --color-border: GrayText;
+  
   --label-gap: 1em;
 
   /* input range */
@@ -32,14 +37,29 @@
   --input-range-thumb-is: 1rem;
   --input-range-track-bs: 1px;
   --input-range-track-lower: var(--color-accent);
-  --input-range-track-upper: var(--color-border);
+  --input-range-track-upper: var(--app-border-c);
 
-  color-scheme: dark;
+  /* color-scheme: dark; */
   display: grid;
   font-size: var(--fsz);
   font-weight: 300;
   inline-size: var(--app-width, max-content);
 }
+
+@supports(color:color-mix(in srgb, red 50%, tan)) {
+  :where(body) {
+    --app-body-bg: color-mix(in srgb, Canvas 95%, CanvasText);
+    --app-border-c: color-mix(in srgb, CanvasText 30%, Canvas);
+    --app-field-bg: color-mix(in srgb, Field 95%, FieldText);
+  }
+}
+@supports not (color:color-mix(in srgb, red 50%, tan)) {
+  :where(body) {
+    /* --app-field-bg: hsl(0, 0%, 95%); */
+  }
+}
+
+
 .app button {
   background: color-mix(in srgb, var(--color-accent) 60%, Canvas);
   border: none;
@@ -51,16 +71,17 @@
 div:has(details) { position: relative; }
 fieldset {
   border-width: 0;
-  /* border: 1px solid var(--gap-c); */
+  border: 1px solid var(--app-border-c);
   border-radius: var(--bdrs);
-  color: var(--c);
+  color: var(--app-c);
   display: grid;
-  gap: var(--gap);
+  gap: 0; /*var(--gap);*/
   margin: 0 0 .5em 0;
   padding: unset;
 }
 fieldset >* {
-  background-color: var(--bgc);
+  background-color: var(--app-bg);
+  border-block-end: 1px solid var(--app-border-c);
   padding-block: var(--pb);
   padding-inline: var(--pi);
 }
@@ -110,7 +131,7 @@ radio-group input + span {
 }
 radio-group input:checked + span {
   background-color: #FFF;
-  color: var(--bgc);
+  color: var(--app-bg);
 }
 .app summary {
   align-items: center;
@@ -130,7 +151,9 @@ radio-group input:checked + span {
 .app :is([type="number"], [type="text"], select, textarea) {
   -webkit-appearance: none;
   appearance: none;
+  background-color: var(--app-field-bg);
   border: none;
+  border-radius: var(--app-input-bdrs);
   color: inherit;
   font-size: inherit;
   
@@ -143,11 +166,11 @@ radio-group input:checked + span {
   color: darkgray;
 }
 .app select {
-  background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' stroke='white' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
+  background: transparent var(--app-select-bg);
   background-repeat: no-repeat;
-  background-position: 104% 50%;
+  background-position: 99% 50%;
   background-size: 2em;
-  padding-inline-end: 1em;
+  padding: .25em 1em .25em .5em;
 }
 .app textarea {
   resize: vertical;
@@ -183,10 +206,10 @@ radio-group input:checked + span {
     gap: var(--label-gap);
   }
   .horizontal summary +* {
-    background-color: var(--bgc);
+    background-color: var(--app-bg);
     border-block-start: 1px solid var(--gap-c);
     border-radius: 0 0 var(--bdrs) var(--bdrs); 
-    color: var(--c);
+    color: var(--app-c);
     block-size: 10em;
     inline-size: min-content;
     inset-block: 100%;
@@ -354,7 +377,7 @@ radio-group input:checked + span {
 }
 /* === Focus === */
 :where(input[type="range"]):focus-visible {
-  --outline-color: var(--color-border);
+  --outline-color: var(--app-border-c);
   --outline-style: dotted;
   --outline-offset: 2px;
   --outline-width: 1px;
