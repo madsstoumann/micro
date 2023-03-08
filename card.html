@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Content Card Creator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+  <!-- <link rel="stylesheet" href="content.props.css" />
+  <link rel="stylesheet" href="content.css" />
+  <link rel="stylesheet" href="content.queries.css" /> -->
+</head>
+<body>
+
+<main>
+  <content-outer>
+    <content-inner>
+      <content-media id="contentMedia">
+        <img src="https://picsum.photos/500/500" alt="description">
+      </content-media>
+      <content-text>
+        <small>LATEST NEWS</small>
+        <h2 contenteditable="">Headline</h2>
+        <p contenteditable="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, earum omnis totam distinctio itaque sequi saepe doloremque eaque, magnam, soluta ad ipsum!</p>
+        <a href="#">Read more</a>
+      </content-text>
+    </content-inner>
+  </content-outer>
+
+  <form class="app" id="app">
+    <fieldset>
+      <label>
+        <span>container-size</span>
+        <input type="range" min="20" max="100" value="50" name="cto-mis" data-scope="root" data-unit="%" style="--input-range-track-lower:ActiveText;--input-range-thumb-bg:ActiveText;" />
+      </label>
+      <label>
+        <span>media source</span>
+        <select form="media" id="media">
+          <option value="https://picsum.photos/500/500">random image</option>
+          <option value="https://picsum.photos/id/907/500/500">beach night</option>
+          <option value="https://picsum.photos/id/867/500/500">bridge</option>
+          <option value="https://picsum.photos/id/830/500/500">blue mountains</option>
+          <option value="https://picsum.photos/id/238/500/500">city</option>
+          <option value="https://picsum.photos/id/63/500/500">coffee</option>
+          <option value="https://picsum.photos/id/318/500/500">eiffel tower</option>
+          <option value="https://picsum.photos/id/717/500/500">field</option>
+          <option value="https://picsum.photos/id/901/500/500">northern lights</option>
+          <option value="https://picsum.photos/id/716/500/500">ocean</option>
+          <option value="https://picsum.photos/id/115/500/500">rain on asphalt</option>
+          <option value="https://picsum.photos/id/859/500/500">red house</option>
+          <option value="https://picsum.photos/id/981/500/500">spinning</option>
+
+          <option value="https://picsum.photos/id/907/500/500|https://picsum.photos/id/830/500/500|https://picsum.photos/id/901/500/500">gallery</option>
+
+          <option value="https://assets.stoumann.dk/img/iphone.png">product — front</option>
+          <option value="https://assets.stoumann.dk/img/iphone2.png">product — side</option>
+
+          <option value="https://assets.stoumann.dk/video/field.mp4">video — field</option>
+          <option value="https://assets.stoumann.dk/video/food.mp4">video — food</option>
+          <option value="https://assets.stoumann.dk/video/river.mp4">video — river</option>
+          <option value="https://assets.stoumann.dk/video/swimmer.mp4">video — swimmer</option>
+          <option value="https://www.youtube.com/embed/036w1MUoAa0">YouTube — default</option>
+
+          <option value="https://www.youtube.com/embed/036w1MUoAa0?autoplay=1">YouTube — autoplay</option>
+          <option value="https://www.youtube.com/embed/036w1MUoAa0?autoplay=1&controls=0">YouTube — autoplay, no controls</option>
+        </select>
+      </label>
+      <label>
+        <span>border-color</span>
+        <input type="text" name="cti-bdc" value="#CCC" data-scope="root" />
+      </label>
+      <label>
+        <span>border-radius</span>
+        <input type="range" name="cti-bdrs" min="0" max="10" value="0" step="0.125" data-scope="root" data-unit="em" />
+      </label>
+      <label>
+        <span>border-width</span>
+        <input type="range" name="cti-bdw" max="20" value="0" data-scope="root" data-unit="px" />
+      </label>
+      <label>
+        <span>box-shadow</span>
+        <select name="cti-bxsh" data-scope="root">
+          <option value="">none</option>
+          <option value="0px 1px 2px rgba(0, 0, 0, 0.05)">small</option>
+          <option value="0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)">medium</option>
+          <option value="0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)">large</option>
+          <option value="0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)">x-large</option>
+        </select>
+      </label>
+      <label>
+        <span>display</span>
+        <select name="cti-d" data-scope="root">
+          <option value="0">media and text</option>
+          <option value="1">media only</option>
+          <option value="2">text only</option>
+        </select>
+      </label>
+      <label>
+        <span>grid-auto-columns</span>
+        <input type="range" name="cti-gac" value="100" data-scope="root" data-unit="%" />
+      </label>
+      <label>
+        <span>grid-auto-flow</span>
+        <select name="cti-gaf" data-scope="root">
+          <option value="column">column</option>
+          <option value="row" selected>row</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        <span>media format</span>
+        <select name="cti-mf" data-scope="root">
+          <option value="0">aspect-ratio</option>
+          <option value="2">contained</option>
+          <option value="3">natural size</option>
+          <option value="1">text-controlled</option>
+        </select>
+      </label>
+      <label>
+        <span>media placement</span>
+        <select name="cti-ord" data-scope="root">
+          <option value="0">before text</option>
+          <option value="1">after text</option>
+          <option value="-1">behind text</option>
+        </select>
+      </label>
+      <label>
+        <span>aspect-ratio</span>
+        <input type="range" name="ctm-ar" min="20" max="200" step="0.125" value="56.25" data-scope="root" />
+      </label>
+      <label>
+        <span>object-fit</span>
+        <select name="ctm-of" data-scope="root">
+          <option value="contain">contain</option>
+          <option value="cover" selected>cover</option>
+          <option value="fill">fill</option>
+          <option value="none">none</option>
+          <option value="scale-down">scale-down</option>
+        </select>
+      </label>
+      <label>
+        <span>object-position: x-axis</span>
+        <input type="range" name="ctm-op-x" value="50" data-scope="root" data-unit="%" />
+      </label>
+      <label>
+        <span>object-position: y-axis</span>
+        <input type="range" name="ctm-op-y" value="50" data-scope="root" data-unit="%" />
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        <span>background</span>
+        <input type="text" name="ctt-bg" value="#FFFFFF" data-scope="root" />
+      </label>
+      <label>
+        <span>color</span>
+        <input type="color" name="ctt-c" value="#222222" data-scope="root" />
+      </label>
+      <label>
+        <span>color (on media)</span>
+        <select name="cti-mec" data-scope="root">
+          <option value="0">same as color</option>
+          <option value="1">light</option>
+          <option value="2">dark</option>
+        </select>
+      </label>
+      <label>
+        <span>cta style</span>
+        <select name="cti-cta" data-scope="root">
+          <option value="0">link</option>
+          <option value="1">button</option>
+          <option value="2">button outline</option>
+        </select>
+      </label>
+      <label>
+        <span>font-size</span>
+        <input type="range" name="ctt-fz" min="0.8" max="2" step="0.1" value="1" data-scope="root" data-unit="em" />
+      </label>
+      <label>
+        <span>grid-row-gap</span>
+        <input type="range" name="ctt-grg" min="1" max="20" value="1" data-scope="root" data-unit="ch" />
+      </label>
+      <label>
+        <span>headline font-size</span>
+        <input type="range" name="ctt-hfz" min="1" max="20" step="0.25" value="10" data-scope="root" data-unit="cqi" />
+      </label>
+      <label>
+        <span>padding-block</span>
+        <input type="range" name="ctt-pb" max="10" step="0.25" value="1" data-scope="root" data-unit="em" />
+      </label>
+      <label>
+        <span>padding-inline</span>
+        <input type="range" name="ctt-pi" max="10" step="0.25" value="1" data-scope="root" data-unit="em" />
+      </label>
+      <label>
+        <span>place-content</span>
+        <select name="ctt-pc" data-scope="root">
+          <option value="start">start</option>
+          <option value="center">center</option>
+          <option value="end">end</option>
+          <option value="space-around">space-around</option>
+          <option value="space-between">space-between</option>
+          <option value="space-evenly">space-evenly</option>
+        </select>
+      </label>
+      <label>
+        <span>text-align</span>
+        <select name="ctt-ta" data-scope="root">
+          <option value="center">center</option>
+          <option value="end">end</option>
+          <option value="justify">justify</option>
+          <option value="start" selected>start</option>
+        </select>
+      </label>
+      <label>
+        <span>text width</span>
+        <input type="range" name="ctt-mis" min="20" value="100" data-scope="root" data-unit="%" />
+      </label>
+      <button type="button" name="save">Save</button>
+    </fieldset>
+  </form>
+</main>
+
+<p><small><strong>NOTE:</strong> This app use <code>@container style()</code>code>-queries, that are currently only supported in the latest version of Chrome.<br /><code>max-inline-size</code> has no effect on smaller screens — and is only for resizing the outer container.</small></p>
+<nav id="list"></nav>
+
+<script type="module">
+import App from './app.js'
+
+const presets = [
+  {
+    name: 'Card',
+    data: {"cto-mis":"35","cti-bdc":"#CCC","cti-bdrs":"1.625","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"0","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"0","ctm-op-y":"36","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"0","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.5","ctt-pi":"1.5","ctt-pc":"start","ctt-ta":"start","ctt-mis":"100"}
+  },
+  {
+    name: 'Card — Image Below',
+    data: {"cto-mis":"35","cti-bdc":"#CCC","cti-bdrs":"1.625","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"1","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"0","ctm-op-y":"36","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"0","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.5","ctt-pi":"1.5","ctt-pc":"start","ctt-ta":"start","ctt-mis":"100"}
+  },
+  {
+    name: 'Column Card',
+    data: {"cto-mis":"70","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)","cti-d":"0","cti-gac":"50","cti-gaf":"column","cti-mf":"0","cti-ord":"0","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"0","ctm-op-y":"0","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"0","cti-cta":"1","ctt-fz":"1","ctt-grg":"3","ctt-hfz":"7.25","ctt-pb":"1.25","ctt-pi":"1.5","ctt-pc":"start","ctt-ta":"center","ctt-mis":"100"}
+  },
+  {
+    name: 'Column Card — Image After',
+    data: {"cto-mis":"70","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)","cti-d":"0","cti-gac":"50","cti-gaf":"column","cti-mf":"0","cti-ord":"1","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"0","ctm-op-y":"0","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"0","cti-cta":"1","ctt-fz":"1","ctt-grg":"3","ctt-hfz":"7.25","ctt-pb":"1.25","ctt-pi":"1.5","ctt-pc":"start","ctt-ta":"center","ctt-mis":"100"}
+  },
+  {
+    name: 'Colum Card — Text Center',
+    data: {"cto-mis":"70","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)","cti-d":"0","cti-gac":"50","cti-gaf":"column","cti-mf":"0","cti-ord":"0","ctm-ar":"124.125","ctm-of":"cover","ctm-op-x":"45","ctm-op-y":"43","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"0","cti-cta":"2","ctt-fz":"1","ctt-grg":"3","ctt-hfz":"7.25","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"center","ctt-ta":"center","ctt-mis":"100"}
+  },
+  {
+    name: 'Column Card — Text End',
+    data: {"cto-mis":"70","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)","cti-d":"0","cti-gac":"50","cti-gaf":"column","cti-mf":"0","cti-ord":"0","ctm-ar":"124.125","ctm-of":"cover","ctm-op-x":"45","ctm-op-y":"43","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"0","cti-cta":"2","ctt-fz":"1","ctt-grg":"3","ctt-hfz":"7.25","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"end","ctt-ta":"center","ctt-mis":"100"}
+  },
+  {
+    name: 'Text on Media — Left Top',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"start","ctt-ta":"start","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Left Center',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"center","ctt-ta":"start","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Left Bottom',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"end","ctt-ta":"start","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Center Top',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"start","ctt-ta":"center","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Center Center',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"center","ctt-ta":"center","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Center Bottom',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"end","ctt-ta":"center","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Right Top',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"start","ctt-ta":"end","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Right Center',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"center","ctt-ta":"end","ctt-mis":"85"}
+  },
+  {
+    name: 'Text on Media — Right Bottom',
+    data: {"cto-mis":"60","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"-1","ctm-ar":"73","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"end","ctt-ta":"end","ctt-mis":"85"}
+  },
+  {
+    name: 'Hero',
+    data: {"cto-mis":"100","cti-bdc":"#CCC","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-d":"0","cti-gac":"100","cti-gaf":"row","cti-mf":"1","cti-ord":"-1","ctm-ar":"86.125","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"2","ctt-fz":"1","ctt-grg":"2","ctt-hfz":"10","ctt-pb":"1.25","ctt-pi":"1.25","ctt-pc":"center","ctt-ta":"center","ctt-mis":"60"}
+  },
+  {
+    name: 'Product Card',
+    data: {"cto-mis":"60","cti-bdc":"none","cti-bdrs":"1.75","cti-bdw":"0","cti-bxsh":"","cti-gac":"29","cti-gaf":"column","cti-mf":"2","cti-ord":"0","ctm-ar":"95.875","ctm-of":"contain","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"linear-gradient(45deg, purple, cyan)","ctt-c":"hsla(0,0%,95%,0.9)","cti-mec":"0","cti-cta":"2","ctt-fz":"1","ctt-grg":"2","ctt-hfz":"10","ctt-pb":"1","ctt-pi":"1","ctt-pc":"start","ctt-ta":"start","ctt-mis":"100"}
+  },
+  {
+    name: 'Text Only',
+    data: {"cto-mis":"35","cti-bdc":"#BBB","cti-bdrs":"1.625","cti-bdw":"1","cti-bxsh":"","cti-d":"2","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"0","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"0","ctm-op-y":"36","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"1","cti-cta":"0","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1.5","ctt-pi":"1.5","ctt-pc":"start","ctt-ta":"start","ctt-mis":"100"}
+  },
+  {
+    name: 'Media Only',
+    data: {"cto-mis":"50","cti-bdc":"#CCC","cti-bdrs":"1.25","cti-bdw":"0","cti-bxsh":"0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)","cti-d":"1","cti-gac":"100","cti-gaf":"row","cti-mf":"0","cti-ord":"0","ctm-ar":"56.25","ctm-of":"cover","ctm-op-x":"50","ctm-op-y":"50","ctt-bg":"#FFF","ctt-c":"#222","cti-mec":"0","cti-cta":"0","ctt-fz":"1","ctt-grg":"1","ctt-hfz":"10","ctt-pb":"1","ctt-pi":"1","ctt-pc":"start","ctt-ta":"start","ctt-mis":"100"}
+  }
+]
+
+/* init */
+new App(app, list, presets)
+
+/* change media */
+media.addEventListener("change", () => {
+  let content = '';
+  if (media.value.includes("mp4")) content = `<video src="${media.value}"" muted autoplay playsinline loop></video>`;
+  else if (media.value.includes("youtube")) content = `<iframe src="${media.value}" allow="autoplay;" allowfullscreen></iframe>`
+  else {
+    content = media.value.split('|').map(item => `<img src="${item}" alt="description">`).join('')
+  }
+  contentMedia.innerHTML = content;
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Content Card Creator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="content.demo.css" />
+  <link rel="stylesheet" href="content.props.css" />
+  <link rel="stylesheet" href="content.css" />
+  <link rel="stylesheet" href="content.modifiers.css" />
+</head>
+<body>
+
+<main>
+
+  <content-outer>
+    <content-inner id="inner">
+      <content-media>
+        <img src="/assets/981-500x500.jpg" alt="description">
+      </content-media>
+      <content-text>
+        <small>LATEST NEWS</small>
+        <h2 contenteditable="">Headline</h2>
+        <p contenteditable="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, earum omnis totam distinctio itaque sequi saepe doloremque eaque, magnam, soluta ad ipsum!</p>
+        <a href="#">Read more</a>
+      </content-text>
+    </content-inner>
+  </content-outer>
+
+  <form class="app" id="app">
+		<fieldset>
+      <label>
+        <span>container-size</span>
+        <input type="range" min="20" max="100" value="50" name="cto-mis" data-scope="root" data-unit="%" style="--input-range-track-lower:red;--input-range-thumb-bg:red;" />
+      </label>
+		</fieldset>
+		<fieldset>
+			<radio-group aria-label="dispositions">
+				<label>
+					<input type="radio" name="ct-ly" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="5" data-sr />
+					<span>5</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="6" data-sr />
+					<span>6</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="7" data-sr />
+					<span>7</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ly" value="8" data-sr />
+					<span>8</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="background">
+				<label>
+					<input type="radio" name="ct-bg" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bg" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bg" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bg" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bg" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bg" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="border-radius">
+				<label>
+					<input type="radio" name="ct-bdrs" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bdrs" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bdrs" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bdrs" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bdrs" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bdrs" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="aspect-ratio">
+				<label>
+					<input type="radio" name="ct-ar" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ar" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ar" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ar" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ar" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ar" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="box-shadow">
+				<label>
+					<input type="radio" name="ct-bxsh" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bxsh" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bxsh" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bxsh" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bxsh" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-bxsh" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="color">
+				<label>
+					<input type="radio" name="ct-c" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="color — text-on-media">
+				<label>
+					<input type="radio" name="ct-c2" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c2" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c2" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c2" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c2" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-c2" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="cta">
+				<label>
+					<input type="radio" name="ct-cta" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-cta" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-cta" value="2" data-sr />
+					<span>2</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="font-family">
+				<label>
+					<input type="radio" name="ct-ff" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ff" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ff" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ff" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ff" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ff" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="font-size">
+				<label>
+					<input type="radio" name="ct-fz" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-fz" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-fz" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-fz" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-fz" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-fz" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="grid-row-gap">
+				<label>
+					<input type="radio" name="ct-grg" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-grg" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-grg" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-grg" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-grg" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-grg" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="headline font-family">
+				<label>
+					<input type="radio" name="ct-hff" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hff" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hff" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hff" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hff" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hff" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="headline font-size">
+				<label>
+					<input type="radio" name="ct-hfz" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hfz" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hfz" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hfz" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hfz" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-hfz" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="padding-block">
+				<label>
+					<input type="radio" name="ct-pb" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pb" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pb" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pb" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pb" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pb" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="padding-inline">
+				<label>
+					<input type="radio" name="ct-pi" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pi" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pi" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pi" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pi" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pi" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="place-content">
+				<label>
+					<input type="radio" name="ct-pc" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pc" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-pc" value="2" data-sr />
+					<span>2</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="text-align">
+				<label>
+					<input type="radio" name="ct-ta" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ta" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-ta" value="2" data-sr />
+					<span>2</span>
+				</label>
+			</radio-group>
+
+			<radio-group aria-label="text-width">
+				<label>
+					<input type="radio" name="ct-mis" value="0" checked data-sr />
+					<span>0</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-mis" value="1" data-sr />
+					<span>1</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-mis" value="2" data-sr />
+					<span>2</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-mis" value="3" data-sr />
+					<span>3</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-mis" value="4" data-sr />
+					<span>4</span>
+				</label>
+				<label>
+					<input type="radio" name="ct-mis" value="5" data-sr />
+					<span>5</span>
+				</label>
+			</radio-group>
+		</fieldset>
+  </form>
+</main>
+
+<script type="module">
+import App from './app.js'
+
+/* init */
+new App(app,null,null,inner)
+
+</script>
+</body>
+</html>

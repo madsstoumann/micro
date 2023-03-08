@@ -2,12 +2,15 @@
 :where(body) {
   --app-body-bg: Canvas;
   --app-border-c: GrayText;
+  --app-button-bg: var(--color-accent);
   --app-c: CanvasText;
   --app-field-bg: Field;
   --app-gap: .75em;
   --app-input-bdrs: 2px;
+  --app-legend-bs: 1.5em;
   --app-select-bg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' fill='none' stroke='CanvasText' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
 	--app-width: 200px;
+  --color-accent: hsl(198, 71%, 50%);
 
 	background-color: var(--app-body-bg);
   color: var(--app-c);
@@ -15,8 +18,12 @@
   font-family: var(--app-ff, ui-sans-serif, system-ui, sans-serif);
   margin: var(--app-gap);
 }
+:where(main) {
+	display: grid;
+	gap: var(--app-gap);
+}
 .app {
-  --app-bg: color-mix(in srgb, Canvas 90%, white);
+  --app-bg: Canvas;
   --bdrs: 5px;
   --fsz: 12px;
   --gap: 1px;
@@ -24,11 +31,6 @@
   --pb: .5em;
   --pi: .75em;
 
-  --color-accent: hsl(198, 71%, 50%);
-  
-  --label-gap: 1em;
-
-  /* input range */
   --input-range-brgt-down: 80%;
   --input-range-brgt-hover: 120%;
   --input-range-thumb-bdrs: 50%;
@@ -38,6 +40,7 @@
   --input-range-track-bs: 1px;
   --input-range-track-lower: var(--color-accent);
   --input-range-track-upper: var(--app-border-c);
+  --label-gap: 1em;
 
   /* color-scheme: dark; */
   display: grid;
@@ -48,71 +51,114 @@
 
 @supports(color:color-mix(in srgb, red 50%, tan)) {
   :where(body) {
+    --app-bg: color-mix(in srgb, Canvas 90%, white);
     --app-body-bg: color-mix(in srgb, Canvas 95%, CanvasText);
     --app-border-c: color-mix(in srgb, CanvasText 30%, Canvas);
+    --app-button-bg: color-mix(in srgb, var(--color-accent) 60%, Canvas);
     --app-field-bg: color-mix(in srgb, Field 95%, FieldText);
   }
 }
+/* firefox */
 @supports not (color:color-mix(in srgb, red 50%, tan)) {
   :where(body) {
-    /* --app-field-bg: hsl(0, 0%, 95%); */
+    --app-field-bg: hsl(0, 0%, 95%);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(body) {
+    --app-select-bg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
   }
 }
 
-
 .app button {
-  background: color-mix(in srgb, var(--color-accent) 60%, Canvas);
+  background: var(--app-button-bg, var(--color-accent));
   border: none;
   padding-block: 1.5ch;
 }
 .app button[type="reset"] {
-  filter: grayscale(100) brightness(1.2);
+  background: var(--app-field-bg);
+  opacity: .65;
 }
-div:has(details) { position: relative; }
-fieldset {
+.app fieldset {
   border-width: 0;
   border: 1px solid var(--app-border-c);
   border-radius: var(--bdrs);
   color: var(--app-c);
   display: grid;
-  gap: 0; /*var(--gap);*/
+  gap: 0;
   margin: 0 0 .5em 0;
+  max-inline-size: var(--app-width);
   padding: unset;
 }
-fieldset >* {
+:where(.app fieldset >*) {
   background-color: var(--app-bg);
   border-block-end: 1px solid var(--app-border-c);
   padding-block: var(--pb);
   padding-inline: var(--pi);
 }
-fieldset >*:first-child { border-radius: var(--bdrs) var(--bdrs) 0 0; }
-fieldset >*:last-child { border-radius: 0 0 var(--bdrs) var(--bdrs); }
-fieldset >*:only-child { border-radius: var(--bdrs); }
+.app fieldset >*:first-child { border-radius: var(--bdrs) var(--bdrs) 0 0; }
+.app fieldset >*:last-child { border-radius: 0 0 var(--bdrs) var(--bdrs); border: 0; }
+.app fieldset >*:only-child { border-radius: var(--bdrs); }
 
-/* color */
-input[type="color"] {
+.app input[type="color"] {
   background: none;
   border: 0;
   inline-size: 100%;
   padding: 0;
  }
-input[type="color"]::-webkit-color-swatch-wrapper { padding: var(--pb) 0; }
-input[type="color"]::-webkit-color-swatch {
+.app input[type="color"]::-webkit-color-swatch-wrapper { padding: var(--pb) 0; }
+.app input[type="color"]::-webkit-color-swatch {
   border-color: CanvasText;
   border-radius: 3px;
 }
-label { display: inline-grid; }
-legend {
-  background: color-mix(in srgb, Canvas 70%, HighLight);
-  color: color-mix(in srgb, HighLightText 85%, black);
+.app input[type="number"] {
+  background: transparent;
+  inline-size: 3.5em;
+}
+.app :is([type="number"], [type="text"], select, textarea) {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--app-field-bg);
+  border: none;
+  border-radius: var(--app-input-bdrs);
+  color: inherit;
+  font-size: inherit;
+  max-inline-size: calc(var(--app-width) - (2 * var(--pi)));
+}
+[type="text"], textarea {
+  margin-block-start: .25em;
+  padding: .33em .5em;
+}
+.app :is([disabled], [readonly]) { color: GrayText; }
+.app select {
+  background: transparent var(--app-select-bg);
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+  background-size: 2em;
+  padding: .25em 1em .25em .5em;
+}
+.app textarea {
+  resize: vertical;
+}
+.app label { display: inline-grid; }
+.app fieldset:has(legend) {
+  padding-block-start: calc(1.7 * var(--app-legend-bs));
+  position: relative;
+}
+.app legend {
+  background: var(--app-border-c);
+  block-size: var(--app-legend-bs);
   border-bottom: 1px solid var(--gap-c);
   font-weight: 400;
   inline-size: calc(100% - (2 * var(--app-gap)));
-  padding-block: calc(2 * var(--pb));
+  inset-block-start: 0;
+  position: absolute;
 }
-main {
-	display: grid;
-	gap: var(--app-gap);
+.app pre {
+  background-color: hsl(200, 13%, 91%);
+  color: hsl(205, 100%, 10%);
+  padding: 2ch;
+  white-space: pre-wrap;
 }
 radio-group {
   display: grid;
@@ -125,14 +171,14 @@ radio-group::before {
 }
 radio-group input + span {
   aspect-ratio: 1;
-  border: var(--gap) solid var(--gap-c);
+  border: var(--gap) solid var(--app-border-c);
   display: grid;
   place-content: center;
 }
 radio-group input:checked + span {
-  background-color: #FFF;
-  color: var(--app-bg);
+  background-color: var(--app-field-bg);
 }
+.app div:has(details) { position: relative; }
 .app summary {
   align-items: center;
   display: flex;
@@ -143,45 +189,6 @@ radio-group input:checked + span {
 .app summary > i { margin-inline-start: var(--label-gap); }
 .app summary::-webkit-details-marker { display: none; }
 .app summary +* { max-inline-size: min-content; }
-
-.app [type="number"] {
-  background: transparent;
-  inline-size: 3.5em;
-}
-.app :is([type="number"], [type="text"], select, textarea) {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: var(--app-field-bg);
-  border: none;
-  border-radius: var(--app-input-bdrs);
-  color: inherit;
-  font-size: inherit;
-  
-}
-[type="text"], textarea {
-  margin-block-start: .25em;
-  padding: .33em .5em;
-}
-.app :is([disabled], [readonly]) {
-  color: darkgray;
-}
-.app select {
-  background: transparent var(--app-select-bg);
-  background-repeat: no-repeat;
-  background-position: 99% 50%;
-  background-size: 2em;
-  padding: .25em 1em .25em .5em;
-}
-.app textarea {
-  resize: vertical;
-}
-
-pre {
-  background-color: hsl(200, 13%, 91%);
-  color: hsl(205, 100%, 10%);
-  padding: 2ch;
-  white-space: pre-wrap;
-}
 
 @media (min-width: 800px) {
 	.app { place-self: start end; }
@@ -229,6 +236,7 @@ pre {
   .horizontal-labels label :is(span, strong)::after { content: ":" }
 }
 
+/* ======= TOGGLE LIST ====== */
 .togglelist details {
   border-block-end: 1px solid GrayText;
   padding-block: 1em;
@@ -248,9 +256,7 @@ pre {
   font-size: 0.8em;
   padding: .5em .75em;
 }
-
-/* ======= TOGGLE LIST ====== */
-.togglelist th { background: color-mix(in srgb, ButtonBorder 20%, Canvas); }
+.togglelist th { background: var(--app-field-bg); }
 .togglelist :is(td,th):nth-of-type(1) { inline-size: 15%; }
 .togglelist :is(td,th):nth-of-type(2) { inline-size: 15%; }
 .togglelist :is(td,th):nth-of-type(3) { font-family: ui-monospace, monospace; inline-size: 50%; }
