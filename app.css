@@ -69,14 +69,26 @@
     --app-select-bg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9' /></svg>");
   }
 }
+@media (hover: hover) {
+  :is(.app, .togglelist) button:hover {
+    background-color: color-mix(in srgb, var(--app-button-bg) 85%, black);
+  }
+  :is(.app, .togglelist) button:is([name="delete"], [type="reset"]):hover {
+    text-decoration: line-through;
+  }
+}
 
 .app button {
-  background: var(--app-button-bg, var(--color-accent));
   border: none;
   padding-block: 1.5ch;
+  
+}
+:is(.app, .togglelist) button {
+  background: var(--app-button-bg, var(--color-accent));
+  transition: all .2s ease-in;
 }
 .app button[type="reset"] {
-  background: var(--app-field-bg);
+  --app-button-bg: var(--app-field-bg);
   opacity: .65;
 }
 .app fieldset {
@@ -261,8 +273,8 @@ radio-group input:checked + span {
 .togglelist :is(td,th):nth-of-type(2) { inline-size: 15%; }
 .togglelist :is(td,th):nth-of-type(3) { font-family: ui-monospace, monospace; inline-size: 50%; }
 .togglelist :is(td,th):nth-of-type(4) { inline-size: 20%; text-align: end; }
-.togglelist table button { border: 0; border-radius: .25em; font-size: inherit; padding: .25em .5em; }
-.togglelist table button[name="delete"] { background-color: ActiveText; color: white }
+.togglelist table button { --app-button-bg: ButtonFace; border: 0; border-radius: .25em; font-size: inherit; padding: .25em .5em; }
+.togglelist table button[name="delete"] { --app-button-bg: ActiveText; color: white }
 
 [data-sr] { 
   clip: rect(0 0 0 0);
