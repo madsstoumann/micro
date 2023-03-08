@@ -180,6 +180,7 @@ pre {
   background-color: hsl(200, 13%, 91%);
   color: hsl(205, 100%, 10%);
   padding: 2ch;
+  white-space: pre-wrap;
 }
 
 @media (min-width: 800px) {
