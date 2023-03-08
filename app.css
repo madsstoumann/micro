@@ -123,10 +123,6 @@
   border-color: CanvasText;
   border-radius: 3px;
 }
-.app input[type="number"] {
-  background: transparent;
-  inline-size: 3.5em;
-}
 .app :is([type="number"], [type="text"], select, textarea) {
   -webkit-appearance: none;
   appearance: none;
