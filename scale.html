@@ -85,7 +85,7 @@
 			text.innerHTML = scale.map((prop, index) => {
 				document.documentElement.style.setProperty(`--${app.elements.prefix.value}-${index}`, prop);
 				c+= `--${app.elements.prefix.value}-${index}: ${prop};\n`
-				return `<p style="font-size:var(--fz-${index})">The quick brown fox jumps over the lazy dog</p>`
+				return `<p style="font-size:var(--${app.elements.prefix.value}-${index})">The quick brown fox jumps over the lazy dog</p>`
 			}).join('')
 			code.innerHTML = c
 		})
