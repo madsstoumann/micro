@@ -11,6 +11,7 @@ export default class App {
 	}
 	init(app, list, patterns) {
 		app.addEventListener('input', event => { this.set(event.target) })
+		app.addEventListener('reset', event => { this.update(app) })
 		if (list) this.presets(app, list, patterns)
 		if (app.elements.save) { 
 			app.elements.save.addEventListener('click', () => {
@@ -70,6 +71,7 @@ export default class App {
 	}
 	update(app) {
 		if (this.microNode) return
+		console.log('TODO:RESET')
 		Array.from(app.elements).forEach(input => input.value && input.dispatchEvent(new Event('input', { bubbles: true })))
 	}
 }
