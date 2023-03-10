@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Gradient Editor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="app.css" />
+
+  <style>
+    /* Gradient */
+    .gradient {
+			aspect-ratio: 16 / 9;
+      background: linear-gradient(var(--grd-angle, 35deg), var(--grd-c, #D676EB) var(--grd-stop, 30%), var(--grd-c2, #8227FF) var(--grd-stop2, 70%));
+			border-radius: 0.5rem;
+			inline-size: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gradient Editor</h1>
+  </header>
+  <main>
+    <div class="gradient"></div>
+    <form class="app" id="app">
+      <fieldset>
+        <label>
+          <span>gradient-type</span>
+          <select name="grd-type" data-scope="root">
+            <option value="linear-gradient">linear</option>
+            <option value="conic-gradient">conical</option>
+            <option value="radial-gradient">radial</option>
+          </select>
+        </label>
+        <label>
+          <span>gradient angle</span>
+          <input type="range" max="360" value="35" name="grd-angle" data-scope="root" data-unit="deg" />
+        </label>
+        <label>
+          <span>color 1</span>
+          <input type="color" name="grd-c" value="#D676EB" data-scope="root" />
+        </label>
+        <label>
+          <span>color 1 stop</span>
+          <input type="range" max="100" value="30" name="grd-stop" data-scope="root" data-unit="%" />
+        </label>
+        <label>
+          <span>color 2</span>
+          <input type="color" name="grd-c2" value="#8227FF" data-scope="root" />
+        </label>
+        <label>
+          <span>color 2 stop</span>
+          <input type="range" max="100" value="75" name="grd-stop2" data-scope="root" data-unit="%" />
+        </label>
+      </fieldset>
+
+
+    </form>
+  </main>
+
+  <script type="module">
+    import App from './app.js'
+    new App(app)
+  </script>
+</body>
+</html>

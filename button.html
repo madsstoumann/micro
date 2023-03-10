@@ -135,17 +135,18 @@ nav button {
 </main>
 
 <p><small>Presets:</small></p>
-<nav id="list">
-  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"hsl(195,5%,15%)","btn-bg-hover":"hsl(195,5%,20%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Dark</button>
-  <button type="button" data-preset='{"btn-bdrs":"0","btn-bg":"none","btn-bg-hover":"none","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 1px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,5%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Text Only</button>
-  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient</button>
-  <button type="button" data-preset='{"btn-bdrs":"1.5","btn-bg":"none","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdw":"3","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient outline</button>
-  <button type="button" data-preset='{"btn-bdrs":"0","btn-bg":"hsl(195,50%,35%)","btn-bg-hover":"hsl(195,50%,25%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,50%,70%,0.5)","btn-c":"hsl(195,50%,95%)","btn-c-hover":"hsl(195,50%,99%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Square</button>
-</nav>
+<select id="list">
+  <option disabled selected>Choose</option>
+  <option value='{"btn-bdrs":"1.5","btn-bg":"hsl(195,5%,15%)","btn-bg-hover":"hsl(195,5%,20%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Dark</option>
+  <option value='{"btn-bdrs":"0","btn-bg":"none","btn-bg-hover":"none","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 1px hsla(195,5%,30%,0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,5%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Text Only</option>
+  <option value='{"btn-bdrs":"1.5","btn-bg":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,95%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient</option>
+  <option value='{"btn-bdrs":"1.5","btn-bg":"none","btn-bg-hover":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdc":"linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b)","btn-bdw":"3","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(0, 0%, 60%, 0.5)","btn-c":"hsl(0,0%,5%)","btn-c-hover":"hsl(0,0%,95%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Gradient outline</option>
+  <option value='{"btn-bdrs":"0","btn-bg":"hsl(195,50%,35%)","btn-bg-hover":"hsl(195,50%,25%)","btn-bdc":"none","btn-bdw":"0","btn-bxsh":"none","btn-bxsh-hover":"0 0 0 5px hsla(195,50%,70%,0.5)","btn-c":"hsl(195,50%,95%)","btn-c-hover":"hsl(195,50%,99%)","btn-fz":"1.3","btn-fw":"300","btn-pb":"0.75","btn-pi":"1.75"}'>Square</option>
+</select>
 
 <script type="module">
   import App from './app.js'
-  new App(app, list)
+  new App(app, {listNode:list})
 </script>
 </body>
 </html>

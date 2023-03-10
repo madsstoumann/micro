@@ -222,7 +222,7 @@
 </main>
 
 <p><small><strong>NOTE:</strong> This app use <code>@container style()</code>code>-queries, that are currently only supported in the latest version of Chrome.<br /><code>max-inline-size</code> has no effect on smaller screens — and is only for resizing the outer container.</small></p>
-<nav id="list"></nav>
+<select id="list"><option disabled selected>Choose</option></select>
 
 <script type="module">
 import App from './app.js'
@@ -307,7 +307,7 @@ const presets = [
 ]
 
 /* init */
-new App(app, list, presets)
+new App(app, { listNode: list, presets, storage: 'content' })
 
 /* change media */
 media.addEventListener("change", () => {

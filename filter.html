@@ -10,134 +10,146 @@
 		/* Filter */
 		.filter {
 			filter:
-			var(--fil-url)
-				blur(var(--fil-blur, 0px))
-				brightness(var(--fil-brightness, 1))
-				contrast(var(--fil-contrast, 1))
-				drop-shadow(var(--fil-ds-x, 0) var(--fil-ds-y, 0) var(--fil-ds-blur, 0) var(--fil-ds-c, #0000))
-				grayscale(var(--fil-grayscale, 0))
-				hue-rotate(var(--fil-hue-rotate, 0))
-				invert(var(--fil-invert, 0))
-				opacity(var(--fil-opacity, 1))
-				saturate(var(--fil-saturate, 1))
-				sepia(var(--fil-sepia, 0)
+			var(--url)
+				blur(var(--blur, 0px))
+				brightness(var(--brightness, 1))
+				contrast(var(--contrast, 1))
+				drop-shadow(var(--ds-x, 0) var(--ds-y, 0) var(--ds-blur, 0) var(--ds-c, #0000))
+				grayscale(var(--grayscale, 0))
+				hue-rotate(var(--hue-rotate, 0))
+				invert(var(--invert, 0))
+				opacity(var(--opacity, 1))
+				saturate(var(--saturate, 1))
+				sepia(var(--sepia, 0)
 			);
 			will-change: filter;
+		}
+		img {
+			border-radius: .5rem;
+			max-inline-size: 100%;
 		}
 	</style>
 </head>
 <body>
-
-<main>
-	<img src="/assets/avatar.jpg" alt="Unknown Person" class="filter" />
-
-	<form class="app" id="app">
-		<fieldset>
-			<label>
-				<span>blur</span>
-				<input type="range" name="fil-blur" max="10" step="0.1" value="0" data-scope="root" data-unit="px" />
-			</label>
-			<label>
-				<span>brightness</span>
-				<input type="range" name="fil-brightness" max="3" step="0.1" value="1" data-scope="root" />
-			</label>
-			<label>
-				<span>contrast</span>
-				<input type="range" name="fil-contrast" max="3" step="0.1" value="1" data-scope="root" />
-			</label>
-			<label>
-				<span>drop-shadow offset-x</span>
-				<input type="range" name="fil-ds-x" max="100" value="0" data-scope="root" data-unit="px" />
-			</label>
-			<label>
-				<span>drop-shadow offset-y</span>
-				<input type="range" name="fil-ds-y" max="100" value="0" data-scope="root" data-unit="px" />
-			</label>
-			<label>
-				<span>drop-shadow blur</span>
-				<input type="range" name="fil-ds-blur" max="100" value="0" data-scope="root" data-unit="px" />
-			</label>
-			<label>
-				<span>drop-shadow color</span>
-				<input type="color" name="fil-ds-c" max="100" value="#333333" data-scope="root" />
-			</label>
-			<label>
-				<span>grayscale</span>
-				<input type="range" name="fil-grayscale" max="1" step="0.01" value="0" data-scope="root" />
-			</label>
-			<label>
-				<span>hue-rotate</span>
-				<input type="range" name="fil-hue-rotate" max="360" value="0" data-scope="root" data-unit="deg" />
-			</label>
-			<label>
-				<span>invert</span>
-				<input type="range" name="fil-invert" max="1" step="0.01" value="0" data-scope="root" />
-			</label>
-			<label>
-				<span>opacity</span>
-				<input type="range" name="fil-opacity" max="1" step="0.01" value="1" data-scope="root" />
-			</label>
-			<label>
-				<span>saturate</span>
-				<input type="range" name="fil-saturate" max="10" step="0.01" value="1" data-scope="root" />
-			</label>
-			<label>
-				<span>sepia</span>
-				<input type="range" name="fil-sepia" max="1" step="0.01" value="0" data-scope="root" />
-			</label>
-			<label>
-				<span>url</span>
-				<select name="fil-url" data-scope="root">
-					<option value=" ">none</option>
-					<option value="url('/assets/filters.svg#teal-white')">Teal White</option>
-					<option value="url('/assets/filters.svg#teal-lightgreen')">Teal Lightgreen</option>
-					<option value="url('/assets/filters.svg#cherry-icecream')">Cherry Icecream</option>
-					<option value="url('/assets/filters.svg#blackCurrant-and-mint')">Blackcurrant and Mint</option>
-					<option value="url('/assets/filters.svg#sea')">Sea</option>
-					<option value="url('/assets/filters.svg#warm-sea')">Warm Sea</option>
-					<option value="url('/assets/filters.svg#spring-grass')">Spring Grass</option>
-					<option value="url('/assets/filters.svg#purple-warm')">Warm Purple</option>
-					<option value="url('/assets/filters.svg#green-pink-acid')">Green Pink Acid</option>
-					<option value="url('/assets/filters.svg#yellow-blue-acid')">Yellow Blue Acid</option>
-					<optgroup label="Sunset">
-						<option value="url('/assets/filters.svg#red-sunset')">Red Sunset</option>
-						<option value="url('/assets/filters.svg#red-sunset-with-purple')">Red Sunset with Purple</option>
-						<option value="url('/assets/filters.svg#gold-sunset')">Gold Sunset</option>
-					</optgroup>
-					<optgroup label="Sepia">
-						<option value="url('/assets/filters.svg#sepia')">Sepia</option>
-					<option value="url('/assets/filters.svg#purple-sepia')">Purple Sepia</option>
-						<option value="url('/assets/filters.svg#dark-crimson-sepia')">Dark Crimson Sepia</option>
-						<option value="url('/assets/filters.svg#dark-blue-sepia')">Dark Blue Sepia</option>
-						<option value="url('/assets/filters.svg#dark-green-sepia')">Dark Green Sepia</option>
-					</optgroup>
-					<optgroup label="X-rays">
-						<option value="url('/assets/filters.svg#x-rays')">X-rays</option>
-						<option value="url('/assets/filters.svg#warm-x-rays')">Warm X-rays</option>
-						<option value="url('/assets/filters.svg#golden-x-rays')">Golden X-rays</option>
-					</optgroup>
-					<optgroup label="Squiggly">
-						<option value="url('/assets/filters.svg#squiggly-0')">squiggly-0</option>
-						<option value="url('/assets/filters.svg#squiggly-1')">squiggly-1</option>
-						<option value="url('/assets/filters.svg#squiggly-2')">squiggly-2</option>
-						<option value="url('/assets/filters.svg#squiggly-3')">squiggly-3</option>
-						<option value="url('/assets/filters.svg#squiggly-4')">squiggly-4</option>
-					</optgroup>
-					<option value="url('/assets/filters.svg#noise')">Noise</option>
-					<option value="url('/assets/filters.svg#posterize')">Posterize</option>
-					<option value="url('/assets/filters.svg#dancing')">Dancing</option>
-					<option value="url('/assets/filters.svg#drops')">Drops</option>
-					<option value="url('/assets/filters.svg#grain')">Grain</option>
-					<option value="url('/assets/filters.svg#fluffy')">Fluffy</option>
-				</select>
-			</label>
-			<button type="reset">Reset</button>
-		</fieldset>
-	</form>
-</main>
-<script type="module">
-	import App from './app.js'
-	new App(app)
-</script>
+	<header>
+		<h1>Filter Editor</h1>
+	</header>
+	<main>
+		<div>
+			<img src="/assets/avatar.jpg" alt="Unknown Person" class="filter" id="image" />
+			<pre><code id="code"></code></pre>
+		</div>
+		<form class="app" id="app">
+			<fieldset>
+				<label>
+					<span>blur</span>
+					<input type="range" name="blur" max="10" step="0.1" value="0" data-scope="root" data-unit="px" />
+				</label>
+				<label>
+					<span>brightness</span>
+					<input type="range" name="brightness" max="3" step="0.1" value="1" data-scope="root" />
+				</label>
+				<label>
+					<span>contrast</span>
+					<input type="range" name="contrast" max="3" step="0.1" value="1" data-scope="root" />
+				</label>
+				<label>
+					<span>drop-shadow offset-x</span>
+					<input type="range" name="ds-x" max="100" value="0" data-scope="root" data-unit="px" />
+				</label>
+				<label>
+					<span>drop-shadow offset-y</span>
+					<input type="range" name="ds-y" max="100" value="0" data-scope="root" data-unit="px" />
+				</label>
+				<label>
+					<span>drop-shadow blur</span>
+					<input type="range" name="ds-blur" max="100" value="0" data-scope="root" data-unit="px" />
+				</label>
+				<label>
+					<span>drop-shadow color</span>
+					<input type="color" name="ds-c" max="100" value="#333333" data-scope="root" />
+				</label>
+				<label>
+					<span>grayscale</span>
+					<input type="range" name="grayscale" max="1" step="0.01" value="0" data-scope="root" />
+				</label>
+				<label>
+					<span>hue-rotate</span>
+					<input type="range" name="hue-rotate" max="360" value="0" data-scope="root" data-unit="deg" />
+				</label>
+				<label>
+					<span>invert</span>
+					<input type="range" name="invert" max="1" step="0.01" value="0" data-scope="root" />
+				</label>
+				<label>
+					<span>opacity</span>
+					<input type="range" name="opacity" max="1" step="0.01" value="1" data-scope="root" />
+				</label>
+				<label>
+					<span>saturate</span>
+					<input type="range" name="saturate" max="10" step="0.01" value="1" data-scope="root" />
+				</label>
+				<label>
+					<span>sepia</span>
+					<input type="range" name="sepia" max="1" step="0.01" value="0" data-scope="root" />
+				</label>
+				<label>
+					<span>url</span>
+					<select name="url" data-scope="root">
+						<option value=" ">none</option>
+						<option value="url('/assets/filters.svg#teal-white')">Teal White</option>
+						<option value="url('/assets/filters.svg#teal-lightgreen')">Teal Lightgreen</option>
+						<option value="url('/assets/filters.svg#cherry-icecream')">Cherry Icecream</option>
+						<option value="url('/assets/filters.svg#blackCurrant-and-mint')">Blackcurrant and Mint</option>
+						<option value="url('/assets/filters.svg#sea')">Sea</option>
+						<option value="url('/assets/filters.svg#warm-sea')">Warm Sea</option>
+						<option value="url('/assets/filters.svg#spring-grass')">Spring Grass</option>
+						<option value="url('/assets/filters.svg#purple-warm')">Warm Purple</option>
+						<option value="url('/assets/filters.svg#green-pink-acid')">Green Pink Acid</option>
+						<option value="url('/assets/filters.svg#yellow-blue-acid')">Yellow Blue Acid</option>
+						<optgroup label="Sunset">
+							<option value="url('/assets/filters.svg#red-sunset')">Red Sunset</option>
+							<option value="url('/assets/filters.svg#red-sunset-with-purple')">Red Sunset with Purple</option>
+							<option value="url('/assets/filters.svg#gold-sunset')">Gold Sunset</option>
+						</optgroup>
+						<optgroup label="Sepia">
+							<option value="url('/assets/filters.svg#sepia')">Sepia</option>
+						<option value="url('/assets/filters.svg#purple-sepia')">Purple Sepia</option>
+							<option value="url('/assets/filters.svg#dark-crimson-sepia')">Dark Crimson Sepia</option>
+							<option value="url('/assets/filters.svg#dark-blue-sepia')">Dark Blue Sepia</option>
+							<option value="url('/assets/filters.svg#dark-green-sepia')">Dark Green Sepia</option>
+						</optgroup>
+						<optgroup label="X-rays">
+							<option value="url('/assets/filters.svg#x-rays')">X-rays</option>
+							<option value="url('/assets/filters.svg#warm-x-rays')">Warm X-rays</option>
+							<option value="url('/assets/filters.svg#golden-x-rays')">Golden X-rays</option>
+						</optgroup>
+						<optgroup label="Squiggly">
+							<option value="url('/assets/filters.svg#squiggly-0')">squiggly-0</option>
+							<option value="url('/assets/filters.svg#squiggly-1')">squiggly-1</option>
+							<option value="url('/assets/filters.svg#squiggly-2')">squiggly-2</option>
+							<option value="url('/assets/filters.svg#squiggly-3')">squiggly-3</option>
+							<option value="url('/assets/filters.svg#squiggly-4')">squiggly-4</option>
+						</optgroup>
+						<option value="url('/assets/filters.svg#noise')">Noise</option>
+						<option value="url('/assets/filters.svg#posterize')">Posterize</option>
+						<option value="url('/assets/filters.svg#dancing')">Dancing</option>
+						<option value="url('/assets/filters.svg#drops')">Drops</option>
+						<option value="url('/assets/filters.svg#grain')">Grain</option>
+						<option value="url('/assets/filters.svg#fluffy')">Fluffy</option>
+					</select>
+				</label>
+				<button type="reset">Reset</button>
+			</fieldset>
+		</form>
+	</main>
+	<script type="module">
+		import App from './app.js'
+		new App(app)
+		app.addEventListener('input', () => {
+			const data = [...app.elements].map(input => (input.name && input.name !== 'url') && (input.value !== input.defaultValue) ? `${input.name}(${input.value}${input.dataset.unit||''}) `:'').join('')
+			code.innerHTML = `<strong>filter:</strong> ${app.elements.url.value!==' '?`${app.elements.url.value} `:''}${data.trim()}`
+		})
+	</script>
 </body>
 </html>
