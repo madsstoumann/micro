@@ -263,14 +263,14 @@ radio-group input:checked + span {
 }
 
 /* ======= TOGGLE LIST ====== */
-.togglelist details {
+/* .togglelist details {
   border-block-end: 1px solid GrayText;
   padding-block: 1em;
 }
 .togglelist summary {
   font-size: 1.2em;
   font-weight: 500;
-}
+} */
 .togglelist table {
   border-collapse: collapse;
   margin-block-start: 1em;

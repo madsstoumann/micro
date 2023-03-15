@@ -19,7 +19,7 @@
   </div>
 </main>
 <script>
-const properties = fetch("./properties.json")
+const properties = fetch("./mdn/properties.json")
   .then((data) => data.json())
   .then((json) => {
     props.innerHTML = Object.keys(json)
